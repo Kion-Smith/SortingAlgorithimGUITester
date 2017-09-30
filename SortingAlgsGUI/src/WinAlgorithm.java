@@ -23,10 +23,11 @@ public class WinAlgorithm extends JPanel
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		//gc.insets = new Insets(5,5,5,5); reasonable
+		gc.insets = new Insets(5,5,5,5);
 		
-		gc.weightx =1;
-		gc.weighty =1;
+		//gc.weightx =1;
+		//gc.weighty =1;
+		//gc.ipadx = 500;
 		
 		gc.gridx = 0;
 		gc.gridy = 0;

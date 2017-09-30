@@ -47,6 +47,7 @@ public class SortingProperties extends JPanel
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
+	
 		gc.gridx =0;
 		gc.gridy =0;
 		

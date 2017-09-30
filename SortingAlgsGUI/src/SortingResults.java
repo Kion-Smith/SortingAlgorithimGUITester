@@ -19,7 +19,7 @@ public class SortingResults extends JPanel
 	{
 		experimentalBorder = BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED),"Experimental Results");
 		experimentalBorder.setTitleJustification(TitledBorder.CENTER);
-		setBorder(experimentalBorder);
+		
 		
 		numberLabel = new JLabel("N:");
 		dataTypeLabel = new JLabel("DataType:");
@@ -40,7 +40,7 @@ public class SortingResults extends JPanel
 		
 		gc.gridx =0;
 		gc.gridy =0;
-		
+		setBorder(experimentalBorder);
 		add(numberLabel,gc);
 		
 		gc.gridx =0;
