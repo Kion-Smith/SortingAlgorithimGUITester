@@ -30,7 +30,7 @@ public class SortingProperties extends JPanel
 		sortingPropBorder.setTitleJustification(TitledBorder.CENTER);
 		setBorder(sortingPropBorder);
 		
-		slider = new JSlider(JSlider.HORIZONTAL,0,3000,3000/2);
+		slider = new JSlider(JSlider.HORIZONTAL,0,30000,30000/2);
 		sliderNumber = new JTextField(10);
 		
 		inOrder = new JRadioButton("InOrder");
