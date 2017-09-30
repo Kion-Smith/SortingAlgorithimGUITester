@@ -21,12 +21,12 @@ public class SortingResults extends JPanel
 		experimentalBorder.setTitleJustification(TitledBorder.CENTER);
 		
 		
-		numberLabel = new JLabel("N:");
-		dataTypeLabel = new JLabel("DataType:");
-		sortLabel = new JLabel("Sort:");
-		compareLabel = new JLabel("Comparisons:");
-		movementsLabel = new JLabel("Movements:");
-		timeLabel = new JLabel("Total time:");
+		numberLabel = new JLabel("N: ");
+		dataTypeLabel = new JLabel("DataType: ");
+		sortLabel = new JLabel("Sort: ");
+		compareLabel = new JLabel("Comparisons: ");
+		movementsLabel = new JLabel("Movements: ");
+		timeLabel = new JLabel("Total time: ");
 		
 		numberField = new JTextField(10);
 		dataTypeField = new JTextField(10);
@@ -37,6 +37,8 @@ public class SortingResults extends JPanel
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
+		
+		gc.anchor = GridBagConstraints.FIRST_LINE_END;
 		
 		gc.gridx =0;
 		gc.gridy =0;

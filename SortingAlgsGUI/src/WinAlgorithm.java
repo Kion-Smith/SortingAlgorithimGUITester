@@ -19,20 +19,22 @@ public class WinAlgorithm extends JPanel
 		winBorder.setTitleJustification(TitledBorder.CENTER);
 		setBorder(winBorder);
 		
-		winningField = new JTextField(25);
+		winningField = new JTextField(23);
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		gc.insets = new Insets(5,5,5,5);
+		gc.insets = new Insets(0,8,0,8);
 		
 		//gc.weightx =1;
 		//gc.weighty =1;
-		//gc.ipadx = 500;
+		
+		//gc.ipadx = 275;
 		
 		gc.gridx = 0;
 		gc.gridy = 0;
 		
 		add(winningField,gc);
+		
 
 	}
 }

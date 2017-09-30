@@ -31,32 +31,36 @@ public class SortingTechniques extends JFrame implements ActionListener
 		gc.weightx =  .1;
 		gc.weighty =  .1;
 		gc.gridheight = 3;
-		gc.gridwidth = 0;
+		gc.gridwidth = 3;
 		gc.gridx = 0;
 		gc.gridy = 0;
 		
 		add(sortingPanel,gc);
 		
 		
-		//gc.fill = GridBagConstraints.REMAINDER;
+		gc.fill = GridBagConstraints.VERTICAL;
+	//	gc.ipadx = -5;
 		gc.anchor = GridBagConstraints.FIRST_LINE_END;
 		gc.weightx = .5;
-		gc.weighty = .5;
+		gc.weighty =  1;
 		gc.gridheight = 1;
 		gc.gridwidth = 0;
 		
-		gc.fill = GridBagConstraints.BOTH;
+		//gc.fill = GridBagConstraints.BOTH;
 		gc.gridx = 1;
 		gc.gridy = 0;
+		
 		add(winPanel,gc);
 	
 		//gc.fill = GridBagConstraints.C;
 		
 		//gc.fill = GridBagConstraints.BOTH;
 		gc.weightx = 1;
-		gc.weighty = 1;
+		gc.weighty = 0;
 		gc.gridheight = 1;
 		gc.gridwidth = 0;
+		//gc.ipadx = -330;
+		gc.ipadx = -95;
 		//gc.ipady = 750;
 		//gc.ipadx = 10;
 		gc.gridx = 1;
@@ -65,6 +69,7 @@ public class SortingTechniques extends JFrame implements ActionListener
 
 		//gc.fill = GridBagConstraints.REMAINDER;
 		//gc.fill = GridBagConstraints.BOTH;
+		gc.ipadx = 80;
 		gc.weightx = 1.5;
 		gc.weighty = 1.5;
 		gc.gridheight = 1;
@@ -72,6 +77,7 @@ public class SortingTechniques extends JFrame implements ActionListener
 		gc.gridx = 1;
 		gc.gridy = 2;
 		add(resultsPanel,gc);
+		pack();
 	}
 	
 	public void actionPerformed(ActionEvent e) 
