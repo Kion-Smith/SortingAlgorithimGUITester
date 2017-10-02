@@ -18,6 +18,7 @@ public class SortingTechniquesTest
 		sT.setSize(500,400);
 		sT.setVisible(true);
 		sT.setLocationRelativeTo(null);
+		sT.setResizable(false);//need this to run on laptop, for some reason? Maybe higher resolution...
 		sT.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
