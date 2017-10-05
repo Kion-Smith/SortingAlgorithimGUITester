@@ -33,6 +33,7 @@ public class SortingTechniques extends JFrame implements ActionListener
 		
 		//sorting buttons panel
 		//lesser weight to place it the left
+		//gc.fill = GridBagConstraints.HORIZONTAL;
 		gc.weightx =  .1;
 		gc.weighty =  .1;
 		gc.gridheight = 3;
@@ -57,13 +58,13 @@ public class SortingTechniques extends JFrame implements ActionListener
 		gc.weighty = 0;
 		gc.gridheight = 1;
 		gc.gridwidth = 0;
-		gc.ipadx = -95;//offsets used to fit border
+		gc.ipadx = -85;//offsets used to fit border
 		gc.gridx = 1;
 		gc.gridy = 1;
 		add(propertiesPanel,gc);
 
 		//results Panel
-		gc.ipadx = 76;//offsets used to fit border
+		gc.ipadx = 86;//offsets used to fit border
 		gc.weightx = 1.5;
 		gc.weighty = 1.5;
 		gc.gridheight = 1;

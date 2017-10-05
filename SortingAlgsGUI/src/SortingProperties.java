@@ -50,8 +50,10 @@ public class SortingProperties extends JPanel
 		//Instantiate button
 		createButton = new JButton("Create The List");
 		
+		
 		//Instantiate group and add buttons to it
 		buttons = new ButtonGroup();
+		
 		buttons.add(inOrder);
 		buttons.add(almostOrder);
 		buttons.add(reverseOrder);
@@ -62,7 +64,7 @@ public class SortingProperties extends JPanel
 		GridBagConstraints gc = new GridBagConstraints();
 		
 		// Make all objects fill up areas
-		gc.fill = GridBagConstraints.BOTH;
+		gc.fill = GridBagConstraints.HORIZONTAL;
 		
 		//set it to start from the left hand corner
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -91,6 +93,7 @@ public class SortingProperties extends JPanel
 		add(reverseOrder,gc);
 		
 		//random  radio button
+		gc.ipadx = 0;
 		gc.weightx =  .8;
 		gc.weighty =  .8;
 		gc.gridx =1;
@@ -121,6 +124,8 @@ public class SortingProperties extends JPanel
 		gc.gridheight = 1;
 		gc.gridwidth = 5;
 		add(createButton,gc);
+		
+		
 	}
 	//getters
 	public JTextField getsliderNumber()

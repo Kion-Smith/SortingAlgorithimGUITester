@@ -1,5 +1,5 @@
 
-public class sortingAlgs
+public class SortingAlgorithms
 {
 	public void insertSort(int[] list)
 	{

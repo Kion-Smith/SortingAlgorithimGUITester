@@ -18,6 +18,7 @@ public class WinAlgorithm extends JPanel
 	private JTextField winningField;
 	private TitledBorder winBorder;
 	
+	//winner can be any parameter
 	public WinAlgorithm()
 	{	
 		//Create etchedBorder
@@ -32,7 +33,7 @@ public class WinAlgorithm extends JPanel
 		GridBagConstraints gc = new GridBagConstraints();
 		
 		//add spaces to both side to fill space
-		gc.insets = new Insets(0,8,0,8);
+		gc.insets = new Insets(0,13,0,13);
 		
 		gc.gridx = 0;//set location within the panel
 		gc.gridy = 0;//set location within the panel
