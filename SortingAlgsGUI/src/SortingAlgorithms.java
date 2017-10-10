@@ -149,12 +149,49 @@ public class SortingAlgorithms
 	      temp[current3++] = list2[current2++];
 	    }
 	}
-	public void heapSort() 
+		 /** Heap sort method */
+	public  <E extends Comparable<E>> void heapSort(E[] list) 
 	{
+		  // Create a Heap of integers
+		  //Heap<E> heap = new Heap<>();
+		 
+		 // Add elements to the heap
+		 for (int i = 0; i < list.length; i++) 
+		 {
+			 //  heap.add(list[i]);
+		 }
+		
+		
+		 // Remove elements from the heap
+		 for(int i = list.length - 1; i >= 0; i--)
+		 {
+			 //list[i] = heap.remove();
+		 }
 		
 	}
-	public void radixSort()
-	{
+	public <E extends Comparable<E>>  void radixSort(E[] list)
+	{ /*
+		//E[] bucket = (E[])new java.util.ArrayList[t+1];
+		// Distribute the elements from list to buckets
+		for (int i = 0; i < list.length; i++) 
+		{
+			int key = list[i].getKey(); // Assume element has the getKey() method
+			if (bucket[key] == null)
+				bucket[key] = new java.util.ArrayList<>();
+			bucket[key].add(list[i]);
+		 }
 		
+		// Now move the elements from the buckets back to list
+		int k = 0; // k is an index for list
+		for (int i = 0; i < bucket.length; i++) 
+		{
+			if (bucket[i] != null) 
+			{
+				for (int j = 0; j < bucket[i].size(); j++)
+					list[k++] = bucket[i].get(j);
+			}
+		 }
+		}
+		*/
 	}
 }

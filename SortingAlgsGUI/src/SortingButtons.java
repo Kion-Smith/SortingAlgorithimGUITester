@@ -22,49 +22,6 @@ public class SortingButtons extends JPanel
 	private Border sortingBorder;
 	private CompoundBorder combinedSortingBorder;
 	
-	
-	/* 
-	 ////////////INSERTION SORT/////////////////////////////////////
-	 
-	
-	 ////////////SELECTION SORT/////////////////////////////////////
-	
- 
- ////////////QUICK SORT/////////////////////////////////////
-  * 
-
- 
-  ////////////MERGE SORT/////////////////////////////////////
-   * 
-  public static void mergeSort(int[] list) {
-    
-  }
-
-  
-  
-	 
-	  ////////////HEAP SORT/////////////////////////////////////
-	   
-	   public static <E extends Comparable<E>> void heapSort(E[] list) 
-{
-
-  Heap<E> heap = new Heap<>();
- 
-
-  // Add elements to the heap
-  for (int i = 0; i < list.length; i++)
-  heap.add(list[i]);
-
- // Remove elements from the heap
- for (int i = list.length - 1; i >= 0; i--)
- list[i] = heap.remove();
- }
-	   
-	*/
-	
-	////////////RADIX SORT/////////////////////////////////////
-	
-	public SortingButtons()
 	{
 		
 		//Instantiate buttons
