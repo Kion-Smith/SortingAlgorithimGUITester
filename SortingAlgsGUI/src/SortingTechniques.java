@@ -26,6 +26,16 @@ public class SortingTechniques extends JFrame implements ActionListener
 		 resultsPanel = new SortingResults();
 		 winPanel = new WinAlgorithm();
 		 
+		 //Adding sorting buttons
+		 
+		 sortingPanel.getInsetSort().addActionListener(this);
+		 sortingPanel.getSelecSort().addActionListener(this);
+		 sortingPanel.getQuickSort().addActionListener(this);
+		 sortingPanel.getMergeSort().addActionListener(this);
+		 sortingPanel.getHeapSort().addActionListener(this);
+		 sortingPanel.getRadixSort().addActionListener(this);
+		 
+		 
 		 //set the grid bag layout
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
@@ -77,12 +87,31 @@ public class SortingTechniques extends JFrame implements ActionListener
 	{
 		try
 		{
-			if(sortingPanel.isSelected())
+			
+			///first panel selection maybe change to an array of selection buttons
+			if(e.getSource() == sortingPanel.getInsetSort())
 			{
-				if(e.getSource() == sortingPanel.getSelecSort())
-				{
-					
-				}
+				System.out.println("pressed insert");
+			}
+			else if(e.getSource() == sortingPanel.getSelecSort())
+			{
+				System.out.println("pressed Selec");
+			}
+			else if(e.getSource() == sortingPanel.getQuickSort())
+			{
+				System.out.println("pressed quick");
+			}
+			else if(e.getSource() == sortingPanel.getMergeSort())
+			{
+				System.out.println("pressed Merge");
+			}
+			else if(e.getSource() == sortingPanel.getHeapSort())
+			{
+				System.out.println("pressed Heap");
+			}
+			else if(e.getSource() == sortingPanel.getRadixSort())
+			{
+				System.out.println("pressed Radix");
 			}
 		}
 		catch(Exception ex)
