@@ -75,7 +75,20 @@ public class SortingTechniques extends JFrame implements ActionListener
 	}
 	public void actionPerformed(ActionEvent e) 
 	{
-		
+		try
+		{
+			if(sortingPanel.isSelected())
+			{
+				if(e.getSource() == sortingPanel.getSelecSort())
+				{
+					
+				}
+			}
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 		//adding actions to buttons
 	}
 	

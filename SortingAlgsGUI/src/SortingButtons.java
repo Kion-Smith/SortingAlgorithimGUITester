@@ -1,5 +1,6 @@
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ public class SortingButtons extends JPanel
 	//Variables 
 	private JButton insertSort,selecSort,quickSort,mergeSort,heapSort,radixSort;
 	private Border sortingBorder;
+	private JButton[] buttonArray;
 	private CompoundBorder combinedSortingBorder;
 	
 	{
@@ -31,6 +33,8 @@ public class SortingButtons extends JPanel
 		mergeSort = new JButton("Merge Sort");
 		heapSort = new JButton("Heap Sort");
 		radixSort = new JButton("Radix Sort");
+		
+		buttonArray = new JButton[]{insertSort,selecSort,quickSort,mergeSort,heapSort,radixSort};
 		
 		//Instantiate border, and combined to create the compound border
 		sortingBorder = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
@@ -77,6 +81,21 @@ public class SortingButtons extends JPanel
 		add(radixSort,gc);
 
 		
+	}
+	public void actionPreformed(ActionEvent e)
+	{
+		
+	}
+	public boolean isSelected()
+	{
+		for(int i =0; i<buttonArray.length;i++)
+		{
+			if(buttonArray[i].isSelected())
+			{
+				return false;
+			}
+		}
+		return false;
 	}
 	//Getters
 	public JButton getInsetSort()
