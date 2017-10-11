@@ -128,11 +128,11 @@ public class SortingProperties extends JPanel
 		
 	}
 	//getters
-	public JTextField getsliderNumber()
+	public JTextField getSliderNumber()
 	{
 		return sliderNumber;
 	}
-	public JSlider getslider()
+	public JSlider getSlider()
 	{
 		return slider;
 	}

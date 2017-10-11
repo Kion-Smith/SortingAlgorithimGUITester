@@ -35,6 +35,21 @@ public class SortingTechniques extends JFrame implements ActionListener
 		 sortingPanel.getHeapSort().addActionListener(this);
 		 sortingPanel.getRadixSort().addActionListener(this);
 		 
+		 propertiesPanel.getInOrder().addActionListener(this);
+		 propertiesPanel.getAlmostOrder().addActionListener(this);
+		 propertiesPanel.getReverseOrder().addActionListener(this);
+		 propertiesPanel.getRandom().addActionListener(this);
+		 
+		// propertiesPanel.getSlider().addActionListener(this);
+		 propertiesPanel.getSliderNumber().addActionListener(this);
+		 propertiesPanel.getCreateButton().addActionListener(this);
+		 
+		// resultsPanel.getNumberLabel().addActionListener(this);
+		 
+		 
+		 //Some things without  a direct state dont work like the others
+		 winPanel.getwinningField().addActionListener(this);
+		 
 		 
 		 //set the grid bag layout
 		setLayout(new GridBagLayout());
