@@ -1,5 +1,6 @@
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -36,18 +37,18 @@ public class SortingResults extends JPanel
 		timeLabel = new JLabel("Total time: ");
 		
 		//Instantiate JTextField
-		numberField = new JTextField(10);
-		dataTypeField = new JTextField(10);
-		sortField = new JTextField(10);
-		compareField = new JTextField(10);
-		movementsField = new JTextField(10);
-		timeField = new JTextField(10);
+		numberField = new JTextField(13);
+		dataTypeField = new JTextField(13);
+		sortField = new JTextField(13);
+		compareField = new JTextField(13);
+		movementsField = new JTextField(13);
+		timeField = new JTextField(13);
 		
 		//create layout and gridbag constraints
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		
 		//Number Label
+		
 		gc.anchor = GridBagConstraints.FIRST_LINE_END;//set anchor to right, needed to put all the Labels centered to lthe left
 		gc.gridx =0;//set location within the panel
 		gc.gridy =0;//set location within the panel
@@ -110,6 +111,7 @@ public class SortingResults extends JPanel
 		gc.gridx =1;
 		gc.gridy =5;
 		add(timeField,gc);	
+		
 	}
 	//GETTERS
 	public JLabel getNumberLabel()

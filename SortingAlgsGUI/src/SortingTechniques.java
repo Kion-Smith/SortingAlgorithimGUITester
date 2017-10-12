@@ -4,7 +4,7 @@ import java.awt.GridBagConstraints;
  * CS2336-502
  */
 import java.awt.GridBagLayout;
-
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -59,6 +59,8 @@ public class SortingTechniques extends JFrame implements ActionListener
 		//sorting buttons panel
 		//lesser weight to place it the left
 		//gc.fill = GridBagConstraints.HORIZONTAL;
+		gc.insets = new Insets(6,2,0,0);
+		gc.ipady = 4;
 		gc.weightx =  .1;
 		gc.weighty =  .1;
 		gc.gridheight = 3;
@@ -68,10 +70,10 @@ public class SortingTechniques extends JFrame implements ActionListener
 		add(sortingPanel,gc);
 		
 		//win panel
-		gc.fill = GridBagConstraints.VERTICAL;
+		gc.insets = new Insets(0,0,0,0);
 		gc.anchor = GridBagConstraints.FIRST_LINE_END;
 		gc.weightx = .5;
-		gc.weighty =  1;
+		gc.weighty =  .11;
 		gc.gridheight = 1;
 		gc.gridwidth = 0;
 		gc.gridx = 1;
@@ -79,6 +81,7 @@ public class SortingTechniques extends JFrame implements ActionListener
 		add(winPanel,gc);
 	
 		//properties panel
+		
 		gc.weightx = 1;
 		gc.weighty = 0;
 		gc.gridheight = 1;
@@ -89,14 +92,16 @@ public class SortingTechniques extends JFrame implements ActionListener
 		add(propertiesPanel,gc);
 
 		//results Panel
-		gc.ipadx = 86;//offsets used to fit border
+		gc.ipadx = 51;//offsets used to fit border
+		gc.ipady = 20;
 		gc.weightx = 1.5;
 		gc.weighty = 1.5;
 		gc.gridheight = 1;
-		gc.gridwidth = 0;
+		gc.gridwidth = 1;
 		gc.gridx = 1;
 		gc.gridy = 2;
 		add(resultsPanel,gc);
+		
 	}
 	public void actionPerformed(ActionEvent e) 
 	{

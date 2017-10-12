@@ -26,14 +26,14 @@ public class WinAlgorithm extends JPanel
 		winBorder.setTitleJustification(TitledBorder.CENTER); // put text in the center
 		setBorder(winBorder);//setting border
 		
-		winningField = new JTextField(23);//set text field size
+		winningField = new JTextField(24);//set text field size
 		
 		//create layout and gridbag constraints
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		
+		gc.fill = GridBagConstraints.BOTH;
 		//add spaces to both side to fill space
-		gc.insets = new Insets(0,13,0,13);
+		gc.insets = new Insets(5,6,5,6);
 		
 		gc.gridx = 0;//set location within the panel
 		gc.gridy = 0;//set location within the panel

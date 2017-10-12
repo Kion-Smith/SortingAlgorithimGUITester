@@ -19,6 +19,8 @@ import javax.swing.border.TitledBorder;
 public class SortingProperties extends JPanel
 {
 	//Variables for sorting properties JPanel
+	
+	private JPanel midPanel;
 	private JTextField sliderNumber;
 	private JSlider slider;
 	private JRadioButton inOrder,reverseOrder,almostOrder,random;
@@ -28,8 +30,13 @@ public class SortingProperties extends JPanel
 	
 	private TitledBorder sortingPropBorder;
 	
+	private String listType;
+	private int listNumber;
+	
 	public SortingProperties()
 	{
+		midPanel = new JPanel();
+		
 		//Create etchedBorder with text
 		sortingPropBorder = BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED),"List Properties");
 		sortingPropBorder.setTitleJustification(TitledBorder.CENTER);// put text in the center
@@ -53,7 +60,6 @@ public class SortingProperties extends JPanel
 		
 		//Instantiate group and add buttons to it
 		buttons = new ButtonGroup();
-		
 		buttons.add(inOrder);
 		buttons.add(almostOrder);
 		buttons.add(reverseOrder);
@@ -63,68 +69,72 @@ public class SortingProperties extends JPanel
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
 		
-		// Make all objects fill up areas
-		gc.fill = GridBagConstraints.HORIZONTAL;
-		
 		//set it to start from the left hand corner
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		
-		//In order radio button
-		gc.weightx =  .5;//set "priority" within the panel
-		gc.weighty =  .5;//set "priority" within the panel
-		gc.gridx =0;//set location within the panel
-		gc.gridy =0;//set location within the panel
-		add(inOrder,gc);
-		
-		//almost order radio button
-		gc.weightx =  .6;
-		gc.weighty =  .6;
+		gc.ipadx = 85;
 		gc.gridx =0;
-		gc.gridy =1;
-		add(almostOrder,gc);
-		
-		//Reverse Order radio button
-		gc.anchor = GridBagConstraints.FIRST_LINE_END;// set the other elements to anchor to the right
-		gc.weightx =  .7;
-		gc.weighty =  .7;
-		gc.gridx =1;
 		gc.gridy =0;
-		gc.gridwidth = 1;//expand into another panel(width)
-		add(reverseOrder,gc);
 		
-		//random  radio button
-		gc.ipadx = 0;
-		gc.weightx =  .8;
-		gc.weighty =  .8;
-		gc.gridx =1;
-		gc.gridy =1;
-		add(random,gc);
+			midPanel.setLayout(new GridBagLayout());
+			GridBagConstraints gc1 = new GridBagConstraints();
 		
-		//Slider
-		gc.weightx =  .9;
-		gc.weighty =  .9;
-		gc.gridx =0;
-		gc.gridy =2;
-		gc.gridwidth = 2;
-		add(slider,gc);
+			
+			gc1.insets = new Insets(0,10,0,15);
+			gc1.anchor = GridBagConstraints.LINE_START;
+			gc1.weightx =  .5;//set "priority" within the panel
+			gc1.weighty =  .5;//set "priority" within the panel
+			gc1.gridx = 0;
+			gc1.gridy = 0;
+			midPanel.add(inOrder,gc1);
+			
+			gc.weightx =  .6;
+			gc.weighty =  .6;
+			gc1.gridx = 0;
+			gc1.gridy = 1;
+			midPanel.add(almostOrder,gc1);
+			
+			//\gc1.anchor = GridBagConstraints.PAGE_START;
+			gc1.insets = new Insets(0,20,0,0);
+			gc1.weightx =  .7;
+			gc1.weighty =  .7;
+			gc1.gridx = 1;
+			gc1.gridy = 0;
+			midPanel.add(reverseOrder,gc1);
+			
+			//gc1.anchor = GridBagConstraints.CENTER;
+			gc1.weightx =  .8;
+			gc1.weighty =  .8;
+			gc1.gridx = 1;
+			gc1.gridy = 1;
+			midPanel.add(random,gc1);
+			
+			gc1.anchor = GridBagConstraints.LAST_LINE_START;
+			gc1.insets = new Insets(0,10,0,0);
+			gc1.gridx =0;
+			gc1.gridy =2;
+			gc1.gridwidth = 2;
+			
+			midPanel.add(slider,gc1);
 		
-		//Slider text area
-		gc.gridwidth = 0;
-		gc.ipadx = 50;//add padding for the label
-		gc.gridx =4;
-		gc.gridy =2;
-		add(sliderNumber,gc);
-		
-		//create button
-		gc.weightx =  1;
-		gc.weighty =  1;
-		gc.gridx =0;
-		gc.gridy =3;
-		gc.insets = new Insets(10,10,10,10);//using insets to fix length
-		gc.gridheight = 1;
-		gc.gridwidth = 5;
-		add(createButton,gc);
-		
+			gc1.insets = new Insets(0,-40,0,-40);
+			gc1.ipadx = -55;
+			gc1.weightx = 10;
+			gc1.gridx =2;
+			gc1.gridy =2;
+			midPanel.add(sliderNumber,gc1);
+			
+			gc1.weightx =  1;
+			gc1.weighty =  1;
+			gc1.gridx =0;
+			gc1.gridy =3;
+			gc1.ipadx = 140;
+			gc1.insets = new Insets(10,10,10,10);//using insets to fix length
+			gc1.gridwidth = 6;
+			midPanel.add(createButton,gc1);
+			
+		add(midPanel,gc);
+	
 		
 	}
 	//getters

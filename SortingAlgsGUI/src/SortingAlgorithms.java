@@ -1,8 +1,20 @@
 
 public class SortingAlgorithms
 {
+	
+	private int comparison;
+	private String dataType;//how it was implmented
+	private String sortType;
+	private int comparisons;
+	private int movements;
+	private long startTime;
+	private long endTime;
+	
+	private String winAlg;
+	
 	public void insertSort(int[] list)
 	{
+		startTime = System.nanoTime();
 		for (int i = 1; i < list.length; i++) 
 		{
 		  //Insert list[i] into a sorted sublist list[0..i-1] so that
@@ -22,7 +34,7 @@ public class SortingAlgorithms
 	}
 	public void selectionSort(int[] list)
 	{
-		  
+		startTime = System.nanoTime();
 		 for (int i = 0; i < list.length - 1; i++) 
 		 {
 			 //Find the minimum in the list[i..list.length-1]
@@ -48,6 +60,7 @@ public class SortingAlgorithms
 	}
 	 public void quickSort(int[] list, int first, int last) 
 	 {
+		 startTime = System.nanoTime();
 		 if (last > first)
 		 {
 			 int pivotIndex = quickSortPartiton(list, first, last);
@@ -104,6 +117,7 @@ public class SortingAlgorithms
 	
 	public void mergeSort(int[] list)
 	{
+		startTime = System.nanoTime();
 		if (list.length > 1)
 		{
 		      // Merge sort the first half
@@ -123,6 +137,7 @@ public class SortingAlgorithms
 	}
 	public  void merge(int[] list1, int[] list2, int[] temp) 
 	{
+		startTime = System.nanoTime();
 	    int current1 = 0; // Current index in list1
 	    int current2 = 0; // Current index in list2
 	    int current3 = 0; // Current index in temp
