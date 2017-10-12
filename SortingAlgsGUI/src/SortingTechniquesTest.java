@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 /*Name: Kion Smith
  * NetID: kls160430
@@ -20,5 +22,6 @@ public class SortingTechniquesTest
 		sT.setLocationRelativeTo(null);
 		sT.setResizable(false);//need this to run on laptop, for some reason? Maybe higher resolution...
 		sT.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 }

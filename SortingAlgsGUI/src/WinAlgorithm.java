@@ -26,7 +26,7 @@ public class WinAlgorithm extends JPanel
 		winBorder.setTitleJustification(TitledBorder.CENTER); // put text in the center
 		setBorder(winBorder);//setting border
 		
-		winningField = new JTextField(24);//set text field size
+		winningField = new JTextField(23);//set text field size
 		
 		//create layout and gridbag constraints
 		setLayout(new GridBagLayout());

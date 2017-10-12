@@ -70,12 +70,11 @@ public class SortingProperties extends JPanel
 		GridBagConstraints gc = new GridBagConstraints();
 		
 		//set it to start from the left hand corner
-		gc.anchor = GridBagConstraints.FIRST_LINE_START;
+		//gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		
 		gc.ipadx = 85;
 		gc.gridx =0;
 		gc.gridy =0;
-		
 			midPanel.setLayout(new GridBagLayout());
 			GridBagConstraints gc1 = new GridBagConstraints();
 		
@@ -111,6 +110,7 @@ public class SortingProperties extends JPanel
 			
 			gc1.anchor = GridBagConstraints.LAST_LINE_START;
 			gc1.insets = new Insets(0,10,0,0);
+			gc1.ipadx = 150;
 			gc1.gridx =0;
 			gc1.gridy =2;
 			gc1.gridwidth = 2;
@@ -118,7 +118,7 @@ public class SortingProperties extends JPanel
 			midPanel.add(slider,gc1);
 		
 			gc1.insets = new Insets(0,-40,0,-40);
-			gc1.ipadx = -55;
+			gc1.ipadx = 55;
 			gc1.weightx = 10;
 			gc1.gridx =2;
 			gc1.gridy =2;
