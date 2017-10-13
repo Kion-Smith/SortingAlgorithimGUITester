@@ -124,11 +124,11 @@ public class SortingResults extends JPanel
 	}
 	public JLabel getSortLabel ()
 	{
-		return numberLabel; 
+		return sortLabel; 
 	}
 	public JLabel getCompareLabel()
 	{
-		return sortLabel ; 
+		return compareLabel; 
 	}
 	public JLabel getMovementsLabel()
 	{
@@ -148,11 +148,11 @@ public class SortingResults extends JPanel
 	}
 	public JTextField getSortField ()
 	{
-		return numberField; 
+		return sortField; 
 	}
 	public JTextField getCompareField()
 	{
-		return sortField ; 
+		return compareField; 
 	}
 	public JTextField getMovementsField()
 	{
@@ -175,11 +175,11 @@ public class SortingResults extends JPanel
 	}
 	public void setSortLabel (JLabel j)
 	{
-		 numberLabel=j; 
+		sortLabel=j; 
 	}
 	public void setCompareLabel(JLabel j)
 	{
-		 sortLabel=j; 
+		 compareLabel=j; 
 	}
 	public void setMovementsLabel(JLabel j)
 	{

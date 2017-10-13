@@ -40,7 +40,9 @@ public class SortingTechniques extends JFrame implements ActionListener
 		 propertiesPanel.getReverseOrder().addActionListener(this);
 		 propertiesPanel.getRandom().addActionListener(this);
 		 
-		// propertiesPanel.getSlider().addActionListener(this);
+		 
+		 //propertiesPanel.getSlider().addActionListener(this);
+		 
 		 propertiesPanel.getSliderNumber().addActionListener(this);
 		 propertiesPanel.getCreateButton().addActionListener(this);
 		 
@@ -112,28 +114,61 @@ public class SortingTechniques extends JFrame implements ActionListener
 			///first panel selection maybe change to an array of selection buttons
 			if(e.getSource() == sortingPanel.getInsetSort())
 			{
-				System.out.println("pressed insert");
+				//System.out.println("pressed insert");
+				resultsPanel.getSortField().setText("Insertion");
 			}
 			else if(e.getSource() == sortingPanel.getSelecSort())
 			{
-				System.out.println("pressed Selec");
+				//System.out.println("pressed Selec");
+				resultsPanel.getSortField().setText("Selection");
 			}
 			else if(e.getSource() == sortingPanel.getQuickSort())
 			{
-				System.out.println("pressed quick");
+				//System.out.println("pressed quick");
+				resultsPanel.getSortField().setText("Quick");
 			}
 			else if(e.getSource() == sortingPanel.getMergeSort())
 			{
-				System.out.println("pressed Merge");
+				//System.out.println("pressed Merge");
+				resultsPanel.getSortField().setText("Merge");
 			}
 			else if(e.getSource() == sortingPanel.getHeapSort())
 			{
-				System.out.println("pressed Heap");
+				//System.out.println("pressed Heap");
+				resultsPanel.getSortField().setText("Heap");
 			}
 			else if(e.getSource() == sortingPanel.getRadixSort())
 			{
-				System.out.println("pressed Radix");
+				//System.out.println("pressed Radix");
+				resultsPanel.getSortField().setText("Radix");
 			}
+			
+			if(e.getSource() == getPropertiesPanel().getInOrder())
+			{
+				//System.out.println("selected inOrder");
+				resultsPanel.getDataTypeField().setText("InOrder");
+			}
+			else if(e.getSource() == getPropertiesPanel().getAlmostOrder())
+			{
+				//System.out.println("selected almost order");
+				resultsPanel.getDataTypeField().setText("AlmostOrder");
+			}
+			else if(e.getSource() == getPropertiesPanel().getReverseOrder())
+			{
+				//System.out.println("selected reverse order");
+				resultsPanel.getDataTypeField().setText("ReverseOrder");
+			}
+			else if(e.getSource() == getPropertiesPanel().getRandom())
+			{
+				//System.out.println("selected Random");
+				resultsPanel.getDataTypeField().setText("Random");
+			}
+			
+			if(e.getSource() == propertiesPanel.getCreateButton())
+			{
+				System.out.println("pressed create");
+			}
+			
 		}
 		catch(Exception ex)
 		{

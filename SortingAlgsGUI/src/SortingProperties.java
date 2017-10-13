@@ -11,6 +11,8 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 /*Name: Kion Smith
  * NetID: kls160430
  * CS2336-502
@@ -45,6 +47,18 @@ public class SortingProperties extends JPanel
 		//Instantiate slider
 		slider = new JSlider(JSlider.HORIZONTAL,0,30000,30000/2);
 		
+		slider.addChangeListener(new ChangeListener()
+		{
+				
+				public void stateChanged(ChangeEvent e) 
+				{
+					int value = slider.getValue();
+					getSliderNumber().setText( value+"" );
+					
+				}
+		} );
+		
+		
 		//Instantiate text area
 		sliderNumber = new JTextField(10);
 		
@@ -70,7 +84,6 @@ public class SortingProperties extends JPanel
 		GridBagConstraints gc = new GridBagConstraints();
 		
 		//set it to start from the left hand corner
-		//gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		
 		gc.ipadx = 85;
 		gc.gridx =0;
@@ -137,6 +150,10 @@ public class SortingProperties extends JPanel
 	
 		
 	}
+	
+	
+	
+	
 	//getters
 	public JTextField getSliderNumber()
 	{
