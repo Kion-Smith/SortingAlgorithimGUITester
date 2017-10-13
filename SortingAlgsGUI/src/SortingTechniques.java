@@ -166,7 +166,8 @@ public class SortingTechniques extends JFrame implements ActionListener
 			
 			if(e.getSource() == propertiesPanel.getCreateButton())
 			{
-				System.out.println("pressed create");
+				//System.out.println("pressed create");
+				resultsPanel.getNumberField().setText(propertiesPanel.getSlider().getValue()+"");
 			}
 			
 			int input = Integer.parseInt(propertiesPanel.getSliderNumber().getText() );
