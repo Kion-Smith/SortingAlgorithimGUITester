@@ -17,26 +17,28 @@ public class SortingAlgorithms
 	{
 		comparisons =0;
 		movements = 0;
-		startTime = System.nanoTime();
+		startTime = System.currentTimeMillis();
 		for (int i = 1; i < list.length; i++) 
 		{
 		  //Insert list[i] into a sorted sublist list[0..i-1] so that
 		  //list[0..i] is sorted. 
-			comparisons++;
+		//comparisons++;
 		  int currentElement = list[i];
 		  int k;
 		  for (k = i - 1; k >= 0 && list[k] > currentElement; k--) 
 		  {
 			 comparisons++;
-			 movements++;
+			
 			list[k + 1] = list[k];
+			 
 		  }
 
 		 // Insert the current element into list[k + 1]
 		 list[k + 1] = currentElement;
+		 movements++;
 		 
 		 }
-		endTime = System.nanoTime() - startTime;
+		endTime = System.currentTimeMillis() - startTime;
 		
 	
 	}
@@ -45,13 +47,13 @@ public class SortingAlgorithms
 		
 		comparisons =0;
 		movements = 0;
-		startTime = System.nanoTime();
+		startTime = System.currentTimeMillis();
 		 for (int i = 0; i < list.length - 1; i++) 
 		 {
 			 //Find the minimum in the list[i..list.length-1]
 			 int currentMin = list[i];
 			 int currentMinIndex = i;
-			 comparisons++;
+			 //comparisons++;
 			 for (int j = i + 1; j < list.length; j++) 
 			 {	comparisons++;
 				 if (currentMin > list[j]) 
@@ -69,20 +71,26 @@ public class SortingAlgorithms
 				 list[i] = currentMin;
 			 }
 		 }
-		 endTime = System.nanoTime() - startTime;
+		 endTime = System.currentTimeMillis() - startTime;
+	}
+	public void quickSortCaller(int[] list)
+	{
+		comparisons =0;
+		movements = 0;
+		startTime = System.currentTimeMillis();
+		
+		quickSort(list, 0, list.length - 1);
 	}
 	 public void quickSort(int[] list, int first, int last) 
 	 {
-		 comparisons =0;
-			movements = 0;
-		 startTime = System.nanoTime();
+		
 		 if (last > first)
 		 {
 			 int pivotIndex = quickSortPartiton(list, first, last);
 			 quickSort(list, first, pivotIndex - 1);
 			 quickSort(list, pivotIndex + 1, last);
 		 }
-		 endTime = System.nanoTime() - startTime;
+		 endTime = System.currentTimeMillis() - startTime;
 	}
 	public int quickSortPartiton(int[] list, int first, int last)
 	{
@@ -90,7 +98,7 @@ public class SortingAlgorithms
 	    int pivot = list[first]; // Choose the first element as the pivot
 	    int low = first + 1; // Index for forward search
 	    int high = last; // Index for backward search
-	    movements++;
+
 	    while (high > low) 
 	    {
 	      // Search forward from left
@@ -119,6 +127,7 @@ public class SortingAlgorithms
 
 	    while (high > first && list[high] >= pivot)
 	    {
+	    	
 	      high--;
 	    }
 
@@ -135,12 +144,18 @@ public class SortingAlgorithms
 	      return first;
 	    }
 	}
-	
-	public void mergeSort(int[] list)
+	public void mergeSortCaller(int[] list)
 	{
 		comparisons =0;
 		movements = 0;
-		startTime = System.nanoTime();
+		
+		startTime = System.currentTimeMillis();
+		mergeSort(list);
+	}
+	public void mergeSort(int[] list)
+	{
+		
+		
 		if (list.length > 1)
 		{
 		      // Merge sort the first half
@@ -157,7 +172,7 @@ public class SortingAlgorithms
 		      // Merge firstHalf with secondHalf into list
 		      merge(firstHalf, secondHalf, list);
 		}
-		endTime = System.nanoTime() - startTime;
+		endTime = System.currentTimeMillis() - startTime;
 	}	
 	public void merge(int[] list1, int[] list2, int[] temp) 
 	{
@@ -171,12 +186,12 @@ public class SortingAlgorithms
 	    	comparisons++;
 	      if (list1[current1] < list2[current2])
 	      {
-	    	  movements++;
+	    	 
 	        temp[current3++] = list1[current1++];
 	      }
 	      else
 	      {
-	    	  movements++;
+	    	 
 	        temp[current3++] = list2[current2++];
 	      }
 	    }
@@ -196,35 +211,34 @@ public class SortingAlgorithms
 	    }
 	}
 		 /** Heap sort method */
-	public  <E extends Comparable<E>> void heapSort(E[] list) 
+	public void heapSort(int[] list) 
 	{	
 		comparisons =0;
 		movements = 0;
 		  // Create a Heap of integers
-		startTime = System.nanoTime();
-		  Heap<E> heap = new Heap<>();
+		startTime = System.currentTimeMillis();
+		  Heap<Integer> heap = new Heap<>();
 		 
 		 // Add elements to the heap
 		 for (int i = 0; i < list.length; i++) 
 		 {
 			   heap.add(list[i]);
 		 }
-		
-		
+
 		 // Remove elements from the heap
 		 for(int i = list.length - 1; i >= 0; i--)
 		 {
 			 list[i] = heap.remove();
 		 }
-		 endTime = System.nanoTime() - startTime;
+		 endTime = System.currentTimeMillis() - startTime;
 	}
 	public void radixSort(int[] list, int max)
 	{ 
 		comparisons =0;
 		movements = 0;
+		startTime = System.currentTimeMillis();
 		  for (int order = 1; order < max; order *= 10) 
 		  {
-			   //@SuppressWarnings("unchecked")
 			   ArrayList<Integer>[] bucket = new ArrayList[10];
 			   
 			   for (int i = 0; i < bucket.length; i++) 
@@ -235,23 +249,26 @@ public class SortingAlgorithms
 			   for (int i = 0; i < list.length; i++) 
 			   {
 				   bucket[(list[i] / order) % 10].add(list[i]);
+				   comparisons++;
 			   }
 			   
 			   int k = 0;
 			   for (int i = 0; i < bucket.length; i++) 
 			   {
-				  
 				   if(bucket[i] != null) 
 				   {
-					   comparisons++;
+					   
 					   for (int j = 0; j < bucket[i].size(); j++)
 					   {
-						   movements++;
+						   comparisons++;
 						   list[k++] = bucket[i].get(j);
+						   movements++;
 					   }
 				   }
 			   }
 		  }
+		  
+		  endTime = System.currentTimeMillis() - startTime;
 	}
 
 	public class Heap<E extends Comparable<E>> 
@@ -284,6 +301,7 @@ public class SortingAlgorithms
 		  // Swap if the current object is greater than its parent
 				 if (list.get(currentIndex).compareTo(list.get(parentIndex)) > 0) 
 				 {
+					 movements++;
 					 E temp = list.get(currentIndex);
 					 list.set(currentIndex, list.get(parentIndex));
 					 list.set(parentIndex, temp);
@@ -359,6 +377,10 @@ public class SortingAlgorithms
 	public int getComparisons()
 	{
 		return comparisons;
+	}
+	public int getMovements()
+	{
+		return movements;
 	}
 	
 	

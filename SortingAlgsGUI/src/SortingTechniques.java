@@ -20,6 +20,10 @@ public class SortingTechniques extends JFrame implements ActionListener
 	
 	private GenerateLists gl;
 	private SortingAlgorithms sa;
+	private int[] temp;
+	
+	private String bestName;
+	private long totalEfficiency;
 	
 	public SortingTechniques()
 	{
@@ -31,6 +35,8 @@ public class SortingTechniques extends JFrame implements ActionListener
 		 
 		 gl = new GenerateLists();
 		 sa = new SortingAlgorithms();
+		 
+		 
 		 //Adding sorting buttons
 		 
 		 sortingPanel.getInsetSort().addActionListener(this);
@@ -117,37 +123,7 @@ public class SortingTechniques extends JFrame implements ActionListener
 		{
 			
 			///first panel selection maybe change to an array of selection buttons
-			if(e.getSource() == sortingPanel.getInsetSort())
-			{
-				//System.out.println("pressed insert");
-				resultsPanel.getSortField().setText("Insertion");
-			}
-			else if(e.getSource() == sortingPanel.getSelecSort())
-			{
-				//System.out.println("pressed Selec");
-				resultsPanel.getSortField().setText("Selection");
-			}
-			else if(e.getSource() == sortingPanel.getQuickSort())
-			{
-				//System.out.println("pressed quick");
-				resultsPanel.getSortField().setText("Quick");
-			}
-			else if(e.getSource() == sortingPanel.getMergeSort())
-			{
-				//System.out.println("pressed Merge");
-				resultsPanel.getSortField().setText("Merge");
-			}
-			else if(e.getSource() == sortingPanel.getHeapSort())
-			{
-				//System.out.println("pressed Heap");
-				resultsPanel.getSortField().setText("Heap");
-			}
-			else if(e.getSource() == sortingPanel.getRadixSort())
-			{
-				//System.out.println("pressed Radix");
-				resultsPanel.getSortField().setText("Radix");
-			}
-			
+		
 		
 			if(e.getSource() == getPropertiesPanel().getInOrder())
 			{
@@ -170,14 +146,22 @@ public class SortingTechniques extends JFrame implements ActionListener
 			{
 				//System.out.println("selected Random");
 				resultsPanel.getDataTypeField().setText("Random");
-
+				
 			}
 			
 			if(e.getSource() == propertiesPanel.getCreateButton())
 			{
 				//System.out.println("pressed create");
+				
+				resultsPanel.getSortField().setText("");
+				resultsPanel.getCompareField().setText("");
+				resultsPanel.getTimeField().setText("");
+				resultsPanel.getMovementsField().setText("");
+				
+				resetBestAlg();
+				
 				resultsPanel.getNumberField().setText(propertiesPanel.getSlider().getValue()+"");
-				int[] temp = new int[propertiesPanel.getSlider().getValue()];
+				temp = new int[propertiesPanel.getSlider().getValue()];
 				
 				
 				if(getPropertiesPanel().getInOrder().isSelected())
@@ -203,15 +187,76 @@ public class SortingTechniques extends JFrame implements ActionListener
 					//System.out.println("selected Random");
 					resultsPanel.getDataTypeField().setText("Random");
 					gl.randomOrder(temp);
-					resultsPanel.getCompareField().setText(sa.getComparisons()+"");
-					resultsPanel.getTimeField().setText(sa.getEndTime()+"");
+					
 				}
 				
-				for(int i =0;i<temp.length;i++)
-				{
-					System.out.println(temp[i]);
-				}
+			}
+			
+			if(e.getSource() == sortingPanel.getInsetSort() )
+			{
+				//System.out.println("pressed insert");
+				sa.insertSort(temp);
+				resultsPanel.getSortField().setText("Insertion");
+				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
+				resultsPanel.getTimeField().setText(sa.getEndTime()+"ms");
+				resultsPanel.getMovementsField().setText(sa.getMovements()+"");
 				
+				checkBestAlg("Insertion Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
+			}
+			else if(e.getSource() == sortingPanel.getSelecSort())
+			{
+				sa.selectionSort(temp);
+				//System.out.println("pressed Selec");
+				resultsPanel.getSortField().setText("Selection");
+				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
+				resultsPanel.getTimeField().setText(sa.getEndTime()+"ms");
+				resultsPanel.getMovementsField().setText(sa.getMovements()+"");
+				
+				checkBestAlg("Selection Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
+			}
+			else if(e.getSource() == sortingPanel.getQuickSort())
+			{
+				//System.out.println("pressed quick");
+				sa.quickSortCaller(temp);
+				resultsPanel.getSortField().setText("Quick");
+				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
+				resultsPanel.getTimeField().setText(sa.getEndTime()+"ms");
+				resultsPanel.getMovementsField().setText(sa.getMovements()+"");
+				
+				checkBestAlg("Quick Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
+			}
+			else if(e.getSource() == sortingPanel.getMergeSort())
+			{
+				//System.out.println("pressed Merge");
+				sa.mergeSortCaller(temp);
+				resultsPanel.getSortField().setText("Merge");
+				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
+				resultsPanel.getTimeField().setText(sa.getEndTime()+"ms");
+				resultsPanel.getMovementsField().setText(sa.getMovements()+"");
+				
+				checkBestAlg("Merge Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
+			}
+			else if(e.getSource() == sortingPanel.getHeapSort())
+			{
+				//System.out.println("pressed Heap");
+				sa.heapSort(temp);
+				resultsPanel.getSortField().setText("Heap");
+				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
+				resultsPanel.getTimeField().setText(sa.getEndTime()+"ms");
+				resultsPanel.getMovementsField().setText(sa.getMovements()+"");
+				
+				checkBestAlg("Heap Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
+			}
+			else if(e.getSource() == sortingPanel.getRadixSort())
+			{
+				//System.out.println("pressed Radix");
+				sa.radixSort(temp, temp.length);
+				resultsPanel.getSortField().setText("Radix");
+				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
+				resultsPanel.getTimeField().setText(sa.getEndTime()+"ms");
+				resultsPanel.getMovementsField().setText(sa.getMovements()+"");
+				
+				checkBestAlg("Radix Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
 			}
 			
 			int input = Integer.parseInt(propertiesPanel.getSliderNumber().getText() );
@@ -222,6 +267,32 @@ public class SortingTechniques extends JFrame implements ActionListener
 			
 		}
 		//adding actions to buttons
+	}
+	
+	public void checkBestAlg(String name, int c,int m,long time)
+	{
+		long temp  = c+m+time;
+		if(totalEfficiency > temp && totalEfficiency != 0)
+		{
+			totalEfficiency = temp;
+			bestName = name;
+			
+			winPanel.getwinningField().setText(bestName);
+		}
+		else if(totalEfficiency == 0)
+		{
+			totalEfficiency = temp;
+			bestName = name;
+			
+			winPanel.getwinningField().setText(bestName);
+		}
+	}
+	public void resetBestAlg()
+	{
+		totalEfficiency =0;
+		bestName = "";
+		
+		winPanel.getwinningField().setText(bestName);
 	}
 	
 	//getters

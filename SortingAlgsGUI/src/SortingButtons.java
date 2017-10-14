@@ -82,14 +82,6 @@ public class SortingButtons extends JPanel
 
 		
 	}
-	public void actionPreformed(ActionEvent e)
-	{
-		
-		if(e.getSource() == insertSort)
-		{
-			System.out.println("Pressed");
-		}
-	}
 	public boolean isSelected()
 	{
 		for(int i =0; i<buttonArray.length;i++)
