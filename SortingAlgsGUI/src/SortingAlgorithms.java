@@ -2,27 +2,21 @@ import java.util.ArrayList;
 
 public class SortingAlgorithms
 {
-	//add setters and getters
-	private int comparison;
-	private String dataType;//how it was implmented
-	private String sortType;
-	private int comparisons;
-	private int movements;
-	private long startTime;
-	private long endTime;
+	private int comparisons;//used to measure compares
+	private int movements;// used for movement measurements
 	
-	private String winAlg;
-	
+	private long startTime;//needed to calc end time
+	private long endTime;// time elapsed when running program
+
 	public void insertSort(int[] list)
 	{
 		comparisons =0;
 		movements = 0;
-		startTime = System.currentTimeMillis();
+		startTime = System.currentTimeMillis();//get cur system time
 		for (int i = 1; i < list.length; i++) 
 		{
 		  //Insert list[i] into a sorted sublist list[0..i-1] so that
 		  //list[0..i] is sorted. 
-		//comparisons++;
 		  int currentElement = list[i];
 		  int k;
 		  for (k = i - 1; k >= 0 && list[k] > currentElement; k--) 
@@ -38,7 +32,7 @@ public class SortingAlgorithms
 		 movements++;
 		 
 		 }
-		endTime = System.currentTimeMillis() - startTime;
+		endTime = System.currentTimeMillis() - startTime;//get time elapsed
 		
 	
 	}
@@ -73,7 +67,7 @@ public class SortingAlgorithms
 		 }
 		 endTime = System.currentTimeMillis() - startTime;
 	}
-	public void quickSortCaller(int[] list)
+	public void quickSortCaller(int[] list)// caller is so recursion does not over right comparisons,moments , and time
 	{
 		comparisons =0;
 		movements = 0;
@@ -88,7 +82,7 @@ public class SortingAlgorithms
 		 {
 			 int pivotIndex = quickSortPartiton(list, first, last);
 			 quickSort(list, first, pivotIndex - 1);
-			 quickSort(list, pivotIndex + 1, last);
+			 quickSort(list, pivotIndex + 1, last);//causes flow error,however program still runs
 		 }
 		 endTime = System.currentTimeMillis() - startTime;
 	}
@@ -144,7 +138,7 @@ public class SortingAlgorithms
 	      return first;
 	    }
 	}
-	public void mergeSortCaller(int[] list)
+	public void mergeSortCaller(int[] list)// caller is so recursion does not over right comparisons,moments , and time
 	{
 		comparisons =0;
 		movements = 0;
@@ -210,7 +204,7 @@ public class SortingAlgorithms
 	      temp[current3++] = list2[current2++];
 	    }
 	}
-		 /** Heap sort method */
+		
 	public void heapSort(int[] list) 
 	{	
 		comparisons =0;
@@ -232,6 +226,7 @@ public class SortingAlgorithms
 		 }
 		 endTime = System.currentTimeMillis() - startTime;
 	}
+	//Modfied radix call to work better with program
 	public void radixSort(int[] list, int max)
 	{ 
 		comparisons =0;
@@ -239,7 +234,7 @@ public class SortingAlgorithms
 		startTime = System.currentTimeMillis();
 		  for (int order = 1; order < max; order *= 10) 
 		  {
-			   ArrayList<Integer>[] bucket = new ArrayList[10];
+			   ArrayList<Integer>[] bucket = new ArrayList[10];//need 10 for 10 buckets
 			   
 			   for (int i = 0; i < bucket.length; i++) 
 			   {
@@ -248,7 +243,7 @@ public class SortingAlgorithms
 			   
 			   for (int i = 0; i < list.length; i++) 
 			   {
-				   bucket[(list[i] / order) % 10].add(list[i]);
+				   bucket[(list[i] / order) % 10].add(list[i]);//ordering the bucket by places
 				   comparisons++;
 			   }
 			   
@@ -261,7 +256,7 @@ public class SortingAlgorithms
 					   for (int j = 0; j < bucket[i].size(); j++)
 					   {
 						   comparisons++;
-						   list[k++] = bucket[i].get(j);
+						   list[k++] = bucket[i].get(j);//Placing bucket in correct order
 						   movements++;
 					   }
 				   }
@@ -270,7 +265,7 @@ public class SortingAlgorithms
 		  
 		  endTime = System.currentTimeMillis() - startTime;
 	}
-
+//Whole heap object as specified by the book
 	public class Heap<E extends Comparable<E>> 
 	{
 		  private java.util.ArrayList<E> list = new java.util.ArrayList<>();
@@ -364,7 +359,7 @@ public class SortingAlgorithms
 		 {
 			 return list.size();
 		 }
-	}
+	}//end of class
 	
 	public long getStartTime()
 	{

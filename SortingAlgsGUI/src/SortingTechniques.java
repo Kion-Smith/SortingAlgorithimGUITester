@@ -18,12 +18,16 @@ public class SortingTechniques extends JFrame implements ActionListener
 	private SortingResults resultsPanel;
 	private WinAlgorithm winPanel;
 	
+	//getting info for array of ints
 	private GenerateLists gl;
 	private SortingAlgorithms sa;
-	private int[] temp;
 	
+	//variables used to get best Alg
 	private String bestName;
 	private long totalEfficiency;
+	
+	//array used for sorting
+	private int[] temp;
 	
 	public SortingTechniques()
 	{
@@ -33,12 +37,12 @@ public class SortingTechniques extends JFrame implements ActionListener
 		 resultsPanel = new SortingResults();
 		 winPanel = new WinAlgorithm();
 		 
+		 //methods for generating list and sorting
 		 gl = new GenerateLists();
 		 sa = new SortingAlgorithms();
 		 
 		 
-		 //Adding sorting buttons
-		 
+		 //Adding sorting buttons to action listener to interact with
 		 sortingPanel.getInsetSort().addActionListener(this);
 		 sortingPanel.getSelecSort().addActionListener(this);
 		 sortingPanel.getQuickSort().addActionListener(this);
@@ -46,22 +50,15 @@ public class SortingTechniques extends JFrame implements ActionListener
 		 sortingPanel.getHeapSort().addActionListener(this);
 		 sortingPanel.getRadixSort().addActionListener(this);
 		 
+		//Adding properties radio buttons to action listener to interact with
 		 propertiesPanel.getInOrder().addActionListener(this);
 		 propertiesPanel.getAlmostOrder().addActionListener(this);
 		 propertiesPanel.getReverseOrder().addActionListener(this);
 		 propertiesPanel.getRandom().addActionListener(this);
-		 
-		 
-		 //propertiesPanel.getSlider().addActionListener(this);
-		 
-		 propertiesPanel.getSliderNumber().addActionListener(this);
+		//Adding properties button to action listener to interact with
 		 propertiesPanel.getCreateButton().addActionListener(this);
 		 
-		// resultsPanel.getNumberLabel().addActionListener(this);
-		 
-		 
-		 //Some things without  a direct state dont work like the others
-		 winPanel.getwinningField().addActionListener(this);
+		
 		 
 		 
 		 //set the grid bag layout
@@ -71,7 +68,6 @@ public class SortingTechniques extends JFrame implements ActionListener
 		
 		//sorting buttons panel
 		//lesser weight to place it the left
-		//gc.fill = GridBagConstraints.HORIZONTAL;
 		gc.insets = new Insets(6,2,0,0);
 		gc.ipady = 4;
 		gc.weightx =  .1;
@@ -119,94 +115,60 @@ public class SortingTechniques extends JFrame implements ActionListener
 	}
 	public void actionPerformed(ActionEvent e) 
 	{
-		try
+		try// try catch to handle user input errors
 		{
 			
-			///first panel selection maybe change to an array of selection buttons
-		
-		
-			if(e.getSource() == getPropertiesPanel().getInOrder())
+			if(e.getSource() == propertiesPanel.getCreateButton())// get when the create button is pressd
 			{
-				//System.out.println("selected inOrder");
-				resultsPanel.getDataTypeField().setText("InOrder");
-			}
-			else if(e.getSource() == getPropertiesPanel().getAlmostOrder())
-			{
-				//System.out.println("selected almost order");
-				resultsPanel.getDataTypeField().setText("AlmostOrder");
-
-			}
-			else if(e.getSource() == getPropertiesPanel().getReverseOrder())
-			{
-				//System.out.println("selected reverse order");
-				resultsPanel.getDataTypeField().setText("ReverseOrder");
-
-			}
-			else if(e.getSource() == getPropertiesPanel().getRandom())
-			{
-				//System.out.println("selected Random");
-				resultsPanel.getDataTypeField().setText("Random");
-				
-			}
-			
-			if(e.getSource() == propertiesPanel.getCreateButton())
-			{
-				//System.out.println("pressed create");
-				
+				//set all results fields to defaults
 				resultsPanel.getSortField().setText("");
 				resultsPanel.getCompareField().setText("");
 				resultsPanel.getTimeField().setText("");
 				resultsPanel.getMovementsField().setText("");
-				
+				//rest the wining alg on every run
 				resetBestAlg();
 				
+				//Setting the text field from slider to create array
 				resultsPanel.getNumberField().setText(propertiesPanel.getSlider().getValue()+"");
 				temp = new int[propertiesPanel.getSlider().getValue()];
 				
-				
+				//Selecting radio buttons  functionality and adding name to text field
 				if(getPropertiesPanel().getInOrder().isSelected())
 				{
-					//System.out.println("selected inOrder");
 					resultsPanel.getDataTypeField().setText("InOrder");
 					gl.generateInorder(temp);
 				}
 				else if(getPropertiesPanel().getAlmostOrder().isSelected())
 				{
-					//System.out.println("selected almost order");
 					resultsPanel.getDataTypeField().setText("AlmostOrder");
 					gl.almostOrder(temp);
 				}
 				else if(getPropertiesPanel().getReverseOrder().isSelected())
 				{
-					//System.out.println("selected reverse order");
 					resultsPanel.getDataTypeField().setText("ReverseOrder");
 					gl.reverseOrder(temp);
 				}
 				else if(getPropertiesPanel().getRandom().isSelected())
 				{
-					//System.out.println("selected Random");
 					resultsPanel.getDataTypeField().setText("Random");
 					gl.randomOrder(temp);
-					
 				}
-				
 			}
 			
+			//Check for when the sort buttons are pressed
 			if(e.getSource() == sortingPanel.getInsetSort() )
 			{
-				//System.out.println("pressed insert");
-				sa.insertSort(temp);
-				resultsPanel.getSortField().setText("Insertion");
-				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
-				resultsPanel.getTimeField().setText(sa.getEndTime()+"ms");
-				resultsPanel.getMovementsField().setText(sa.getMovements()+"");
+				sa.insertSort(temp);//go to sort method and sort array
+				resultsPanel.getSortField().setText("Insertion");//set the name  field
+				resultsPanel.getCompareField().setText(sa.getComparisons()+"");//set the num of compares field
+				resultsPanel.getTimeField().setText(sa.getEndTime()+"ms");//set the time field
+				resultsPanel.getMovementsField().setText(sa.getMovements()+"");// set movment field
 				
-				checkBestAlg("Insertion Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
+				checkBestAlg("Insertion Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());//check to see against other algs to s which is the winner
 			}
-			else if(e.getSource() == sortingPanel.getSelecSort())
+			else if(e.getSource() == sortingPanel.getSelecSort())//checking for selection
 			{
 				sa.selectionSort(temp);
-				//System.out.println("pressed Selec");
 				resultsPanel.getSortField().setText("Selection");
 				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
 				resultsPanel.getTimeField().setText(sa.getEndTime()+"ms");
@@ -214,9 +176,9 @@ public class SortingTechniques extends JFrame implements ActionListener
 				
 				checkBestAlg("Selection Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
 			}
-			else if(e.getSource() == sortingPanel.getQuickSort())
+			else if(e.getSource() == sortingPanel.getQuickSort())//checking for Quick
 			{
-				//System.out.println("pressed quick");
+
 				sa.quickSortCaller(temp);
 				resultsPanel.getSortField().setText("Quick");
 				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
@@ -225,9 +187,8 @@ public class SortingTechniques extends JFrame implements ActionListener
 				
 				checkBestAlg("Quick Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
 			}
-			else if(e.getSource() == sortingPanel.getMergeSort())
+			else if(e.getSource() == sortingPanel.getMergeSort())//checking for Merge
 			{
-				//System.out.println("pressed Merge");
 				sa.mergeSortCaller(temp);
 				resultsPanel.getSortField().setText("Merge");
 				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
@@ -236,9 +197,8 @@ public class SortingTechniques extends JFrame implements ActionListener
 				
 				checkBestAlg("Merge Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
 			}
-			else if(e.getSource() == sortingPanel.getHeapSort())
+			else if(e.getSource() == sortingPanel.getHeapSort())//Heap sort
 			{
-				//System.out.println("pressed Heap");
 				sa.heapSort(temp);
 				resultsPanel.getSortField().setText("Heap");
 				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
@@ -247,9 +207,8 @@ public class SortingTechniques extends JFrame implements ActionListener
 				
 				checkBestAlg("Heap Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
 			}
-			else if(e.getSource() == sortingPanel.getRadixSort())
+			else if(e.getSource() == sortingPanel.getRadixSort())//radix sort
 			{
-				//System.out.println("pressed Radix");
 				sa.radixSort(temp, temp.length);
 				resultsPanel.getSortField().setText("Radix");
 				resultsPanel.getCompareField().setText(sa.getComparisons()+"");
@@ -259,40 +218,45 @@ public class SortingTechniques extends JFrame implements ActionListener
 				checkBestAlg("Radix Sort", sa.getComparisons(),sa.getMovements(),sa.getEndTime());
 			}
 			
+			//Setting value of slider from text box
 			int input = Integer.parseInt(propertiesPanel.getSliderNumber().getText() );
 			propertiesPanel.getSlider().setValue(input);
 		}
-		catch(Exception ex)
+		catch(Exception ex)//exception handling
 		{
 			
 		}
-		//adding actions to buttons
+
 	}
 	
+	//makes which ever alg has the smallest combined number to be the best alg
 	public void checkBestAlg(String name, int c,int m,long time)
 	{
-		long temp  = c+m+time;
-		if(totalEfficiency > temp && totalEfficiency != 0)
+		
+		long temp  = c+m+time;//add up all the numbers
+		if(totalEfficiency >= temp && totalEfficiency != 0)
+		{
+			totalEfficiency = temp;//set old to be the new best
+			bestName = name;//set name to be new best
+			
+			winPanel.getwinningField().setText(bestName);//setting name
+		}
+		else if(totalEfficiency == 0)//if first run then make alg the best by default
 		{
 			totalEfficiency = temp;
 			bestName = name;
 			
-			winPanel.getwinningField().setText(bestName);
+			winPanel.getwinningField().setText(bestName);//setting name
 		}
-		else if(totalEfficiency == 0)
-		{
-			totalEfficiency = temp;
-			bestName = name;
-			
-			winPanel.getwinningField().setText(bestName);
-		}
+		
 	}
+	//used to rest the alg on new runs of create button
 	public void resetBestAlg()
 	{
 		totalEfficiency =0;
 		bestName = "";
 		
-		winPanel.getwinningField().setText(bestName);
+		winPanel.getwinningField().setText(bestName);//setting name
 	}
 	
 	//getters

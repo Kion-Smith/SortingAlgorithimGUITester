@@ -32,8 +32,6 @@ public class SortingProperties extends JPanel
 	
 	private TitledBorder sortingPropBorder;
 	
-	private String listType;
-	private int listNumber;
 	
 	public SortingProperties()
 	{
@@ -47,13 +45,13 @@ public class SortingProperties extends JPanel
 		//Instantiate slider
 		slider = new JSlider(JSlider.HORIZONTAL,0,30000,30000/2);
 		
-		slider.addChangeListener(new ChangeListener()
+		slider.addChangeListener(new ChangeListener()//add action for slider, needed to make the slider display numbers
 		{
 				
 				public void stateChanged(ChangeEvent e) 
 				{
-					int value = slider.getValue();
-					getSliderNumber().setText( value+"" );
+					int value = slider.getValue();//set the value of the slider to an int
+					getSliderNumber().setText( value+"" );//set int to be value of text field
 					
 				}
 		} );
@@ -88,10 +86,11 @@ public class SortingProperties extends JPanel
 		gc.ipadx = 85;
 		gc.gridx =0;
 		gc.gridy =0;
-			midPanel.setLayout(new GridBagLayout());
-			GridBagConstraints gc1 = new GridBagConstraints();
 		
-			
+			midPanel.setLayout(new GridBagLayout());
+			GridBagConstraints gc1 = new GridBagConstraints();//create second panel to manage frames easier
+		
+			//The radio buttons
 			gc1.insets = new Insets(0,10,0,15);
 			gc1.anchor = GridBagConstraints.LINE_START;
 			gc1.weightx =  .5;//set "priority" within the panel
@@ -99,22 +98,17 @@ public class SortingProperties extends JPanel
 			gc1.gridx = 0;
 			gc1.gridy = 0;
 			midPanel.add(inOrder,gc1);
-			
 			gc.weightx =  .6;
 			gc.weighty =  .6;
 			gc1.gridx = 0;
 			gc1.gridy = 1;
 			midPanel.add(almostOrder,gc1);
-			
-			//\gc1.anchor = GridBagConstraints.PAGE_START;
-			gc1.insets = new Insets(0,20,0,0);
+			gc1.insets = new Insets(0,20,0,0); // set space to behind to make radio buttons look lie picture
 			gc1.weightx =  .7;
 			gc1.weighty =  .7;
 			gc1.gridx = 1;
 			gc1.gridy = 0;
 			midPanel.add(reverseOrder,gc1);
-			
-			//gc1.anchor = GridBagConstraints.CENTER;
 			gc1.weightx =  .8;
 			gc1.weighty =  .8;
 			gc1.gridx = 1;
@@ -123,15 +117,14 @@ public class SortingProperties extends JPanel
 			
 			gc1.anchor = GridBagConstraints.LAST_LINE_START;
 			gc1.insets = new Insets(0,10,0,0);
-			gc1.ipadx = 150;
+			gc1.ipadx = 150;//make slider longer
 			gc1.gridx =0;
 			gc1.gridy =2;
 			gc1.gridwidth = 2;
-			
 			midPanel.add(slider,gc1);
 		
-			gc1.insets = new Insets(0,-40,0,-40);
-			gc1.ipadx = 55;
+			gc1.insets = new Insets(0,-40,0,-40);//changing size
+			gc1.ipadx = 55;//change postion
 			gc1.weightx = 10;
 			gc1.gridx =2;
 			gc1.gridy =2;
@@ -146,7 +139,7 @@ public class SortingProperties extends JPanel
 			gc1.gridwidth = 6;
 			midPanel.add(createButton,gc1);
 			
-		add(midPanel,gc);
+		add(midPanel,gc);//add the temp panel to the main one
 	
 		
 	}
