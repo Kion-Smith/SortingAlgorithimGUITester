@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class SortingAlgorithms
 {
@@ -14,35 +15,45 @@ public class SortingAlgorithms
 	
 	public void insertSort(int[] list)
 	{
+		comparisons =0;
+		movements = 0;
 		startTime = System.nanoTime();
 		for (int i = 1; i < list.length; i++) 
 		{
 		  //Insert list[i] into a sorted sublist list[0..i-1] so that
 		  //list[0..i] is sorted. 
-		  
+			comparisons++;
 		  int currentElement = list[i];
 		  int k;
 		  for (k = i - 1; k >= 0 && list[k] > currentElement; k--) 
 		  {
+			 comparisons++;
+			 movements++;
 			list[k + 1] = list[k];
 		  }
 
 		 // Insert the current element into list[k + 1]
 		 list[k + 1] = currentElement;
-		 }
 		 
+		 }
+		endTime = System.nanoTime() - startTime;
+		
+	
 	}
 	public void selectionSort(int[] list)
 	{
+		
+		comparisons =0;
+		movements = 0;
 		startTime = System.nanoTime();
 		 for (int i = 0; i < list.length - 1; i++) 
 		 {
 			 //Find the minimum in the list[i..list.length-1]
 			 int currentMin = list[i];
 			 int currentMinIndex = i;
-	 
+			 comparisons++;
 			 for (int j = i + 1; j < list.length; j++) 
-			 {
+			 {	comparisons++;
 				 if (currentMin > list[j]) 
 				 {
 					 currentMin = list[j];
@@ -52,14 +63,18 @@ public class SortingAlgorithms
 
 			 // Swap list[i] with list[currentMinIndex] if necessary
 			 if (currentMinIndex != i) 
-			 {
+			 {	
+			 	movements++;
 				 list[currentMinIndex] = list[i];
 				 list[i] = currentMin;
 			 }
 		 }
+		 endTime = System.nanoTime() - startTime;
 	}
 	 public void quickSort(int[] list, int first, int last) 
 	 {
+		 comparisons =0;
+			movements = 0;
 		 startTime = System.nanoTime();
 		 if (last > first)
 		 {
@@ -67,30 +82,35 @@ public class SortingAlgorithms
 			 quickSort(list, first, pivotIndex - 1);
 			 quickSort(list, pivotIndex + 1, last);
 		 }
+		 endTime = System.nanoTime() - startTime;
 	}
 	public int quickSortPartiton(int[] list, int first, int last)
 	{
+		
 	    int pivot = list[first]; // Choose the first element as the pivot
 	    int low = first + 1; // Index for forward search
 	    int high = last; // Index for backward search
-
+	    movements++;
 	    while (high > low) 
 	    {
 	      // Search forward from left
 	    	while (low <= high && list[low] <= pivot)
 	    	{
 	    		low++;
+	    		comparisons++;
 	    	}
 
 	    	// Search backward from right
 	    	while (low <= high && list[high] > pivot)
 	    	{
-	        high--;
-	    		}
+	    		high--;
+	    		comparisons++;
+	    	}
 
 	      // Swap two elements in the list
 	    	if (high > low)
 	    	{
+	    		movements++;
 	    		int temp = list[high];
 	    		list[high] = list[low];
 	    		list[low] = temp;
@@ -105,6 +125,7 @@ public class SortingAlgorithms
 	    // Swap pivot with list[high]
 	    if (pivot > list[high]) 
 	    {
+	    	movements++;
 	      list[first] = list[high];
 	      list[high] = pivot;
 	      return high;
@@ -117,6 +138,8 @@ public class SortingAlgorithms
 	
 	public void mergeSort(int[] list)
 	{
+		comparisons =0;
+		movements = 0;
 		startTime = System.nanoTime();
 		if (list.length > 1)
 		{
@@ -134,40 +157,51 @@ public class SortingAlgorithms
 		      // Merge firstHalf with secondHalf into list
 		      merge(firstHalf, secondHalf, list);
 		}
-	}
-	public  void merge(int[] list1, int[] list2, int[] temp) 
+		endTime = System.nanoTime() - startTime;
+	}	
+	public void merge(int[] list1, int[] list2, int[] temp) 
 	{
-		startTime = System.nanoTime();
+	
 	    int current1 = 0; // Current index in list1
 	    int current2 = 0; // Current index in list2
 	    int current3 = 0; // Current index in temp
 
 	    while (current1 < list1.length && current2 < list2.length) 
 	    {
+	    	comparisons++;
 	      if (list1[current1] < list2[current2])
 	      {
+	    	  movements++;
 	        temp[current3++] = list1[current1++];
 	      }
 	      else
 	      {
+	    	  movements++;
 	        temp[current3++] = list2[current2++];
 	      }
 	    }
 
 	    while (current1 < list1.length)
 	    {
+	    	comparisons++;
+	    	 movements++;
 	      temp[current3++] = list1[current1++];
 	    }
 
 	    while (current2 < list2.length)
 	    {
+	    	comparisons++;
+	    	 movements++;
 	      temp[current3++] = list2[current2++];
 	    }
 	}
 		 /** Heap sort method */
 	public  <E extends Comparable<E>> void heapSort(E[] list) 
-	{
+	{	
+		comparisons =0;
+		movements = 0;
 		  // Create a Heap of integers
+		startTime = System.nanoTime();
 		  Heap<E> heap = new Heap<>();
 		 
 		 // Add elements to the heap
@@ -182,40 +216,52 @@ public class SortingAlgorithms
 		 {
 			 list[i] = heap.remove();
 		 }
-		
+		 endTime = System.nanoTime() - startTime;
 	}
-	public <E extends Comparable<E>>  void radixSort(E[] list)
-	{ /*
-		E[] bucket = (E[])new java.util.ArrayList[t+1];
-		// Distribute the elements from list to buckets
-		for (int i = 0; i < list.length; i++) 
-		{
-			int key = list[i].getKey(); // Assume element has the getKey() method
-			if (bucket[key] == null)
-				bucket[key] = new java.util.ArrayList<>();
-			bucket[key].add(list[i]);
-		 }
-		
-		// Now move the elements from the buckets back to list
-		int k = 0; // k is an index for list
-		for (int i = 0; i < bucket.length; i++) 
-		{
-			if (bucket[i] != null) 
-			{
-				for (int j = 0; j < bucket[i].size(); j++)
-					list[k++] = bucket[i].get(j);
-			}
-		 }
-		}
-		*/
+	public void radixSort(int[] list, int max)
+	{ 
+		comparisons =0;
+		movements = 0;
+		  for (int order = 1; order < max; order *= 10) 
+		  {
+			   //@SuppressWarnings("unchecked")
+			   ArrayList<Integer>[] bucket = new ArrayList[10];
+			   
+			   for (int i = 0; i < bucket.length; i++) 
+			   {
+				   bucket[i] = new java.util.ArrayList<>();
+			   }
+			   
+			   for (int i = 0; i < list.length; i++) 
+			   {
+				   bucket[(list[i] / order) % 10].add(list[i]);
+			   }
+			   
+			   int k = 0;
+			   for (int i = 0; i < bucket.length; i++) 
+			   {
+				  
+				   if(bucket[i] != null) 
+				   {
+					   comparisons++;
+					   for (int j = 0; j < bucket[i].size(); j++)
+					   {
+						   movements++;
+						   list[k++] = bucket[i].get(j);
+					   }
+				   }
+			   }
+		  }
 	}
-	
-	
-	public class Heap<E extends Comparable<E>> {
+
+	public class Heap<E extends Comparable<E>> 
+	{
 		  private java.util.ArrayList<E> list = new java.util.ArrayList<>();
 		 
 		  /** Create a default heap */
-		  public Heap() {
+		  public Heap() 
+		  {
+			  
 		  }
 		 
 		  /** Create a heap from an array of objects */
@@ -226,70 +272,94 @@ public class SortingAlgorithms
 		  }
 
 		 /** Add a new object into the heap */
-		 public void add(E newObject) {
-		 list.add(newObject); // Append to the heap
-		 int currentIndex = list.size() - 1; // The index of the last node
+		 public void add(E newObject) 
+		 {
+			 list.add(newObject); // Append to the heap
+			 int currentIndex = list.size() - 1; // The index of the last node
 
-		 while (currentIndex > 0) {
-		 int parentIndex = (currentIndex - 1) / 2;
+			 while (currentIndex > 0) 
+			 {
+				 comparisons++;
+				 int parentIndex = (currentIndex - 1) / 2;
 		  // Swap if the current object is greater than its parent
-		 if (list.get(currentIndex).compareTo(
-		 list.get(parentIndex)) > 0) {
-		 E temp = list.get(currentIndex);
-		 list.set(currentIndex, list.get(parentIndex));
-		 list.set(parentIndex, temp);
-		 }
-		 else
-		 break; // The tree is a heap now
+				 if (list.get(currentIndex).compareTo(list.get(parentIndex)) > 0) 
+				 {
+					 E temp = list.get(currentIndex);
+					 list.set(currentIndex, list.get(parentIndex));
+					 list.set(parentIndex, temp);
+				 }
+				 else
+					 break; // The tree is a heap now
 
-		 currentIndex = parentIndex;
-		 }
+				 currentIndex = parentIndex;
+			 }
 		 }
 
 		 /** Remove the root from the heap */
-		 public E remove() {
-		 if (list.size() == 0) return null;
+		 public E remove() 
+		 {
+			 if (list.size() == 0) 
+				 return null;
 
-		 E removedObject = list.get(0);
-		 list.set(0, list.get(list.size() - 1));
-		 list.remove(list.size() - 1);
+			 E removedObject = list.get(0);
+			 list.set(0, list.get(list.size() - 1));
+			 list.remove(list.size() - 1);
 
-		 int currentIndex = 0;
-		 while (currentIndex < list.size()) {
+			 int currentIndex = 0;
+			 while (currentIndex < list.size()) 
+			 {
+				 comparisons++;
+				 int leftChildIndex = 2 * currentIndex + 1;
+				 int rightChildIndex = 2 * currentIndex + 2;
 
-
-		 int leftChildIndex = 2 * currentIndex + 1;
-		 int rightChildIndex = 2 * currentIndex + 2;
-
-		 // Find the maximum between two children
-		 if (leftChildIndex >= list.size()) break; // The tree is a heap
-		 int maxIndex = leftChildIndex;
-		 if (rightChildIndex < list.size()) {
-		 if (list.get(maxIndex).compareTo(
-		 list.get(rightChildIndex)) < 0) {
-		 maxIndex = rightChildIndex;
-		 }
-		 }
+				 // Find the maximum between two children
+				 if (leftChildIndex >= list.size()) 
+					 break; // The tree is a heap
+				 int maxIndex = leftChildIndex;
+				 if (rightChildIndex < list.size()) 
+				 {
+					 if (list.get(maxIndex).compareTo(list.get(rightChildIndex)) < 0) 
+					 {
+						 maxIndex = rightChildIndex;
+						 movements++;
+					 }
+				 }
 
 		 // Swap if the current node is less than the maximum
-		 if (list.get(currentIndex).compareTo(
-		 list.get(maxIndex)) < 0) {
-		 E temp = list.get(maxIndex);
-		 list.set(maxIndex, list.get(currentIndex));
-		 list.set(currentIndex, temp);
-		 currentIndex = maxIndex;
-		 }
-		 else
-		 break; // The tree is a heap
-		 }
+				 if (list.get(currentIndex).compareTo(list.get(maxIndex)) < 0) 
+				 {
+					 E temp = list.get(maxIndex);
+					 list.set(maxIndex, list.get(currentIndex));
+					 list.set(currentIndex, temp);
+					 currentIndex = maxIndex;
+					 movements++;
+				 }
+				 else
+					 break; // The tree is a heap
+			 }	
 
-		 return removedObject;
+			 return removedObject;
 		 }
 
 		 /** Get the number of nodes in the tree */
-		 public int getSize() {
-		 return list.size();
+		 public int getSize() 
+		 {
+			 return list.size();
 		 }
-		 }
+	}
+	
+	public long getStartTime()
+	{
+		return startTime;
+	}
+	public long getEndTime()
+	{
+		return endTime;
+	}
+	public int getComparisons()
+	{
+		return comparisons;
+	}
+	
 	
 }

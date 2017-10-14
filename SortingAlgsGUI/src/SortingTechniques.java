@@ -18,6 +18,9 @@ public class SortingTechniques extends JFrame implements ActionListener
 	private SortingResults resultsPanel;
 	private WinAlgorithm winPanel;
 	
+	private GenerateLists gl;
+	private SortingAlgorithms sa;
+	
 	public SortingTechniques()
 	{
 		//All the panels instantiated
@@ -26,6 +29,8 @@ public class SortingTechniques extends JFrame implements ActionListener
 		 resultsPanel = new SortingResults();
 		 winPanel = new WinAlgorithm();
 		 
+		 gl = new GenerateLists();
+		 sa = new SortingAlgorithms();
 		 //Adding sorting buttons
 		 
 		 sortingPanel.getInsetSort().addActionListener(this);
@@ -143,6 +148,7 @@ public class SortingTechniques extends JFrame implements ActionListener
 				resultsPanel.getSortField().setText("Radix");
 			}
 			
+		
 			if(e.getSource() == getPropertiesPanel().getInOrder())
 			{
 				//System.out.println("selected inOrder");
@@ -152,22 +158,60 @@ public class SortingTechniques extends JFrame implements ActionListener
 			{
 				//System.out.println("selected almost order");
 				resultsPanel.getDataTypeField().setText("AlmostOrder");
+
 			}
 			else if(e.getSource() == getPropertiesPanel().getReverseOrder())
 			{
 				//System.out.println("selected reverse order");
 				resultsPanel.getDataTypeField().setText("ReverseOrder");
+
 			}
 			else if(e.getSource() == getPropertiesPanel().getRandom())
 			{
 				//System.out.println("selected Random");
 				resultsPanel.getDataTypeField().setText("Random");
+
 			}
 			
 			if(e.getSource() == propertiesPanel.getCreateButton())
 			{
 				//System.out.println("pressed create");
 				resultsPanel.getNumberField().setText(propertiesPanel.getSlider().getValue()+"");
+				int[] temp = new int[propertiesPanel.getSlider().getValue()];
+				
+				
+				if(getPropertiesPanel().getInOrder().isSelected())
+				{
+					//System.out.println("selected inOrder");
+					resultsPanel.getDataTypeField().setText("InOrder");
+					gl.generateInorder(temp);
+				}
+				else if(getPropertiesPanel().getAlmostOrder().isSelected())
+				{
+					//System.out.println("selected almost order");
+					resultsPanel.getDataTypeField().setText("AlmostOrder");
+					gl.almostOrder(temp);
+				}
+				else if(getPropertiesPanel().getReverseOrder().isSelected())
+				{
+					//System.out.println("selected reverse order");
+					resultsPanel.getDataTypeField().setText("ReverseOrder");
+					gl.reverseOrder(temp);
+				}
+				else if(getPropertiesPanel().getRandom().isSelected())
+				{
+					//System.out.println("selected Random");
+					resultsPanel.getDataTypeField().setText("Random");
+					gl.randomOrder(temp);
+					resultsPanel.getCompareField().setText(sa.getComparisons()+"");
+					resultsPanel.getTimeField().setText(sa.getEndTime()+"");
+				}
+				
+				for(int i =0;i<temp.length;i++)
+				{
+					System.out.println(temp[i]);
+				}
+				
 			}
 			
 			int input = Integer.parseInt(propertiesPanel.getSliderNumber().getText() );
@@ -175,7 +219,7 @@ public class SortingTechniques extends JFrame implements ActionListener
 		}
 		catch(Exception ex)
 		{
-			ex.printStackTrace();
+			
 		}
 		//adding actions to buttons
 	}
