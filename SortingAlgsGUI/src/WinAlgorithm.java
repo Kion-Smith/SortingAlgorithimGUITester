@@ -10,8 +10,10 @@ import javax.swing.border.TitledBorder;
 /*Name: Kion Smith
  * NetID: kls160430
  * CS2336-502
+ * 
+ * ELEMENT OF GUI
  */
-//ELEMENT OF SORTING TECHNIQUES
+
 public class WinAlgorithm extends JPanel
 {
 	//variables for elements of the panel

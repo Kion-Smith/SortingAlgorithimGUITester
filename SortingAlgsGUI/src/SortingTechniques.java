@@ -1,7 +1,10 @@
+
 import java.awt.GridBagConstraints;
 /*Name: Kion Smith
  * NetID: kls160430
  * CS2336-502
+ * 
+ * create gui
  */
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -9,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-//START OF GUI
+
 public class SortingTechniques extends JFrame implements ActionListener
 {
 	//the Panels

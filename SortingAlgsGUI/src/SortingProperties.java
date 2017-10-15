@@ -16,8 +16,10 @@ import javax.swing.event.ChangeListener;
 /*Name: Kion Smith
  * NetID: kls160430
  * CS2336-502
+ * 
+ * ELEMENT OF GUI
  */
-//ELEMENT OF SORTING TECHNIQUES
+
 public class SortingProperties extends JPanel
 {
 	//Variables for sorting properties JPanel

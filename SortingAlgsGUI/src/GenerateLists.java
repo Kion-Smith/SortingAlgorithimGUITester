@@ -1,7 +1,10 @@
 /*Name: Kion Smith
  * NetID: kls160430
  * CS2336-502
+ * 
+ * Create lists
  */
+
 public class GenerateLists 
 {
 	public GenerateLists()

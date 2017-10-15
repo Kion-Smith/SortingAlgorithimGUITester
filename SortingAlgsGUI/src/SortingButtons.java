@@ -11,8 +11,10 @@ import javax.swing.border.EtchedBorder;
 /*Name: Kion Smith
  * NetID: kls160430
  * CS2336-502
+ * 
+ * ELEMENT OF GUI
  */
-//ELEMENT OF SORTING TECHNIQUES
+
 public class SortingButtons extends JPanel
 {
 	//need to add setters and getters

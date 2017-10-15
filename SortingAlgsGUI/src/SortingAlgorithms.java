@@ -1,3 +1,9 @@
+/*Name: Kion Smith
+ * NetID: kls160430
+ * CS2336-502
+ * 
+ * All the sorts
+ */
 import java.util.ArrayList;
 
 public class SortingAlgorithms
@@ -78,13 +84,28 @@ public class SortingAlgorithms
 	 public void quickSort(int[] list, int first, int last) 
 	 {
 		
-		 if (last > first)
+		 if (last > first && !(isSorted(list)) )// to stop overflow errors
 		 {
 			 int pivotIndex = quickSortPartiton(list, first, last);
-			 quickSort(list, first, pivotIndex - 1);
-			 quickSort(list, pivotIndex + 1, last);//causes flow error,however program still runs
+			 
+				 quickSort(list, first, pivotIndex - 1);
+				 quickSort(list, pivotIndex + 1, last);//cause over flow if run twice and dosent check if sorted
+			
 		 }
 		 endTime = System.currentTimeMillis() - startTime;
+	}
+	 
+	public boolean isSorted(int[] list)
+	{
+		
+		    for (int i = 0; i < list.length - 1; i++) 
+		    {
+		        if (list[i] > list[i + 1]) {
+		            return false; // It is proven that the array is not sorted.
+		        }
+		    }
+
+		    return true;
 	}
 	public int quickSortPartiton(int[] list, int first, int last)
 	{
