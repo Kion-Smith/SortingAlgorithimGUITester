@@ -20,7 +20,7 @@ public class SortingButtons extends JPanel
 	//need to add setters and getters
 
 	//Variables 
-	private JButton insertSort,selecSort,quickSort,mergeSort,heapSort,radixSort;
+	private JButton insertSort,selecSort,quickSort,mergeSort,heapSort,radixSort;//have to make this like this
 	private Border sortingBorder;
 	private CompoundBorder combinedSortingBorder;
 	
