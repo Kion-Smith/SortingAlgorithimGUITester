@@ -45,6 +45,14 @@ public class SortingResults extends JPanel
 		movementsField = new JTextField(13);
 		timeField = new JTextField(13);
 		
+		//Not editable
+		numberField.setEditable(false);
+		dataTypeField.setEditable(false);
+		sortField.setEditable(false);
+		compareField.setEditable(false);
+		movementsField.setEditable(false);
+		timeField.setEditable(false);
+		
 		//create layout and gridbag constraints
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
