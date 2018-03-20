@@ -48,28 +48,30 @@ public class SortingAlgorithms
 		comparisons =0;
 		movements = 0;
 		startTime = System.currentTimeMillis();
+		
+		//looping through the list
 		 for (int i = 0; i < list.length - 1; i++) 
 		 {
-			 //Find the minimum in the list[i..list.length-1]
-			 int currentMin = list[i];
-			 int currentMinIndex = i;
-			 //comparisons++;
-			 for (int j = i + 1; j < list.length; j++) 
-			 {	comparisons++;
-				 if (currentMin > list[j]) 
+			 comparisons++;
+			 int index = i;
+			 //looping again to compare next postion
+			 for(int j = i+1;j<list.length;j++)
+			 {
+				 comparisons++;
+				 //check to see if the last item was less than new item
+				 if(list[j] < list[index])
 				 {
-					 currentMin = list[j];
-					 currentMinIndex = j;
+					 index =j;
 				 }
+				 
+				 movements++;
+				 //move items ( last version had an if stament but code in pp does not use a if statement)
+				 int smallerNumber = list[index];
+				 list[index] = list[i];
+				 list[i] = smallerNumber;
 			 }
+			 
 
-			 // Swap list[i] with list[currentMinIndex] if necessary
-			 if (currentMinIndex != i) 
-			 {	
-			 	movements++;
-				 list[currentMinIndex] = list[i];
-				 list[i] = currentMin;
-			 }
 		 }
 		 endTime = System.currentTimeMillis() - startTime;
 	}
