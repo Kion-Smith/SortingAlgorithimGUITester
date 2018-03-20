@@ -9,8 +9,9 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 /*Name: Kion Smith
  * NetID: kls160430
- * CS2336-502
+ * CS3345-501
  * 
+ * REVISED FROM CS2336
  * ELEMENT OF GUI
  */
 //ELEMENT OF SORTING TECHNIQUES

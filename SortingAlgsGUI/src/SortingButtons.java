@@ -10,8 +10,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 /*Name: Kion Smith
  * NetID: kls160430
- * CS2336-502
+ * CS3345-501
  * 
+ * REVISED FROM CS2336
  * ELEMENT OF GUI
  */
 

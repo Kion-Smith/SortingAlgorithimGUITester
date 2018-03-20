@@ -1,7 +1,8 @@
 /*Name: Kion Smith
  * NetID: kls160430
- * CS2336-502
+ * CS3345-501
  * 
+ * REVISED FROM CS2336
  * All the sorts
  */
 import java.util.ArrayList;
