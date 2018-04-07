@@ -44,6 +44,7 @@ public class SortingTechniques extends JFrame implements ActionListener
 		 //methods for generating list and sorting
 		 gl = new GenerateLists();
 		 sa = new SortingAlgorithms();
+		 JButton kek = new JButton("keke");
 		 
 		 
 		 //Adding sorting buttons to action listener to interact with
