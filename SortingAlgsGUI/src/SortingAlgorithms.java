@@ -76,7 +76,7 @@ public class SortingAlgorithms
 		 }
 		 endTime = System.currentTimeMillis() - startTime;
 	}
-	public void quickSortCaller(int[] list)// caller is so recursion does not over right comparisons,moments , and time
+	public void quickSortCaller(int[] list)//using caller is so recursion does not over writer comparisons,moments , and time
 	{
 		comparisons =0;
 		movements = 0;
@@ -92,7 +92,7 @@ public class SortingAlgorithms
 			 int pivotIndex = quickSortPartiton(list, first, last);
 			 
 				 quickSort(list, first, pivotIndex - 1);
-				 quickSort(list, pivotIndex + 1, last);//cause over flow if run twice and dosent check if sorted
+				 quickSort(list, pivotIndex + 1, last);// can cause over flow if run twice and dosent check if sorted
 			
 		 }
 		 endTime = System.currentTimeMillis() - startTime;
